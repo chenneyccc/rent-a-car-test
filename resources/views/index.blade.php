@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ URL::to('../img/bmw.jpg') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ URL::to('../img/bmw.png') }}" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">De zomer is in aantocht en dan wilt u toch niets liever dan ultieme zomergevoel beleven? Huur dan eens een cabrio bij Rent A Car. Geniet gedurende het voorjaar en zomer van de mooie steden en natuur die Nederland rijk is. Daarnaast kunt u natuurlijk ook op vakantie naar het buitenland met deze cabrio.</p>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top"  src="{{ URL::to('../img/audi.jpg') }}" alt="Card image cap">
+                            <img class="card-img-top"  src="{{ URL::to('../img/audi.png') }}" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Iedereen droomt er wel eens van om in een exclusieve auto rond te rijden. Bij Rent A Car kun je tegen een aantrekkelijke prijs een luxueuze auto huren. Dit kan voor een langere periode, maar natuurlijk is dit ook mogelijk voor een dag. U kunt bij ons een betrouwbare auto huren.
 

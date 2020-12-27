@@ -13,7 +13,7 @@ class StoreAutoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreAutoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kenteken' => 'required',
+            'type' => 'required',
+            'merk' => 'required',
+            'prijs_per_dag' => 'required'
         ];
     }
 }

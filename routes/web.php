@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/about', function () {
-    return view('about');
-});
+//Route::get('/about', function () {
+//    return view('about');
+//});
 Route::get('/', function () {
     return view('index');
 });
@@ -29,7 +30,9 @@ Route::get('/index', function () {
 
 Auth::routes();
 
+Route::resource('reservering',\App\Http\Controllers\ReserveringController::class);
 Route::resource('autos', \App\Http\Controllers\AutoController::class );
 Route::resource('assortiment', \App\Http\Controllers\AssortimentController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');

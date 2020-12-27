@@ -53,7 +53,7 @@
                             <label for="prijs" class="col-md-4 col-form-label text-md-right">{{ __('prijs') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prijs" type="text" class="form-control @error('prijs') is-invalid @enderror" name="prijs" value="{{ old('prijs') }}" required autocomplete="prijs" autofocus>
+                                <input id="prijs" type="text" class="form-control @error('prijs') is-invalid @enderror" name="prijs_per_dag" value="{{ old('prijs') }}" required autocomplete="prijs_per_dag" autofocus>
 
                                 @error('domain')
                                 <span class="invalid-feedback" role="alert">

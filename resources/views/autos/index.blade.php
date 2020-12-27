@@ -30,8 +30,16 @@
                                     <td>{{$auto->merk}}</td>
                                     <td>{{$auto->type}}</td>
                                     <td>{{$auto->prijs_per_dag}}</td>
-                                    <td><a href="{{$auto->id}}" class="btn btn-success">Wijzig</a> </td>
-                                    <td><a href="{{$auto->id}}" class="btn btn-danger">Deleting</a> </td>
+                                    <td><a href="{{route('autos.edit',$auto->id)}}" class="btn btn-success">Wijzig</a> </td>
+                                    <td>
+                                        <form action="{{route('autos.destroy',$auto->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" onclick="return confirm('Ben je zeker dat je dit wilt verwijderen')"
+                                                    class="btn btn-danger">Verwijderen</button>
+
+                                        </form>
+                                    </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
