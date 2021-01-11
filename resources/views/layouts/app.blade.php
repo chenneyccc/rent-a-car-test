@@ -41,11 +41,12 @@
                             <a class="nav-link" href="{{route('assortiment.index')}}">Assortiment</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">contact</a>
+                            <a class="nav-link" href="{{route('contact')}}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('autos.index')}}">autos aanpassen</a>
+                            <a class="nav-link" href="{{route('autos.index')}}">Autos Aanpassen</a>
                         </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,6 +75,9 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        Wijzig account
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

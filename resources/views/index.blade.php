@@ -37,13 +37,7 @@
                             <img class="card-img-top" src="{{ URL::to('../img/bmw.png') }}" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">De zomer is in aantocht en dan wilt u toch niets liever dan ultieme zomergevoel beleven? Huur dan eens een cabrio bij Rent A Car. Geniet gedurende het voorjaar en zomer van de mooie steden en natuur die Nederland rijk is. Daarnaast kunt u natuurlijk ook op vakantie naar het buitenland met deze cabrio.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -55,11 +49,6 @@
 
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
                         </div>
@@ -69,19 +58,13 @@
                             <img class="card-img-top" src="{{ URL::to('../img/mercedes-suv.jpg') }}" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text">Een SUV huren betekent veel comfort, vermogen, zitplaatsen én bagageruimte. Dankzij de flexibiliteit van een SUV is het een ideale huurauto voor zowel korte stedentrips als langere autovakanties: iedereen heeft genoeg ruimte om de hele reis lang te kunnen blijven genieten. </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
+
                             </div>
                         </div>
                     </div>
             </div>
         </div>
-
+        </div>
     </main>
 
 
