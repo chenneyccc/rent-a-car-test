@@ -78,6 +78,8 @@
                                             User Management
                                         </a>
                                     @endcan
+
+
                                     <a class="dropdown-item" href="{{ route('user.edit') }}">
                                         {{ __('edit profile') }}
                                     </a>

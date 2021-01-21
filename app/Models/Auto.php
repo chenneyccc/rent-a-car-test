@@ -9,5 +9,9 @@ class Auto extends Model
 {
     protected $table = 'autos';
     protected $guarded = [''];
-    use HasFactory;
+
+    public function autos()
+    {
+        return $this->belongsToMany('\App\Reservering');
+    }
 }
