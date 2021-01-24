@@ -19,7 +19,7 @@ class ReserveringController extends Controller
     public function index()
     {
 
-        $reservering = Reservering::with('user', 'auto')->get();
+        $reservering = Reservering::with('user')->get();
         return view('reservering.index', compact('reservering'));
     }
 
@@ -39,15 +39,18 @@ class ReserveringController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request, User $id)
     {
-        $this->attributes['user_id'] = Auth::user()->id;
- $request->validate([
+         $this->attributes['user_id'] = Auth::user()->id;
+            $request->validate([
             'begintijd' => 'required',
             'eindtijd' => 'required'
         ]);
+
+
+
         Reservering::create($request->input());
-        return redirect('reservering.index');
+        return redirect('assortiment');
     }
 
     /**
