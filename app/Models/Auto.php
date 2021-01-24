@@ -10,8 +10,8 @@ class Auto extends Model
     protected $table = 'autos';
     protected $guarded = [''];
 
-    public function autos()
+    public function reserveringen()
     {
-        return $this->belongsToMany('\App\Reservering');
+        return $this->hasMany(Reservering::class, 'auto_id', 'id');
     }
 }

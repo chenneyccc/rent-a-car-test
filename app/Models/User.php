@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Reservering;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -59,8 +60,8 @@ class User extends Authenticatable
         return false;
     }
 
-    public function user()
+    public function reserveringen()
     {
-        return $this->belongsTo(Reservering::class);
+        return $this->hasMany(Reservering::class, 'user_id', 'id');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Auto;
 use App\Models\User;
 use App\Models\Reservering;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReserveringController extends Controller
 {
@@ -17,9 +18,9 @@ class ReserveringController extends Controller
      */
     public function index()
     {
-//        $user = User::find($id);
-        $reserverings = Reservering::all();
-        return view('reservering.index', compact('reserverings','user'));
+
+        $reservering = Reservering::with('user', 'auto')->get();
+        return view('reservering.index', compact('reservering'));
     }
 
     /**
@@ -38,13 +39,15 @@ class ReserveringController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReserveringRequest $request, User $user)
+    public function store(Request $request, User $user)
     {
-//        Reservering::$user()->sync($request->user);
-
-        Reservering::create($request->validated());
-
-        return redirect()->route('autos.index');
+        $this->attributes['user_id'] = Auth::user()->id;
+ $request->validate([
+            'begintijd' => 'required',
+            'eindtijd' => 'required'
+        ]);
+        Reservering::create($request->input());
+        return redirect('reservering.index');
     }
 
     /**
@@ -78,9 +81,8 @@ class ReserveringController extends Controller
      */
     public function update(StoreReserveringRequest $request, reservering $reservering)
     {
-        $reservering->update($request->validated());
+       $reservering->update($request->validated());
                 return redirect()->route('reservering.index');
-        $request('auto_id');
     }
 
     /**

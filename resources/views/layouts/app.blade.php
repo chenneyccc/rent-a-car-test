@@ -17,6 +17,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 
+    <!-- Printing -->
+    <script type="text/javascript" src="js/jquery.printPage.js"></script>
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -78,7 +82,11 @@
                                             User Management
                                         </a>
                                     @endcan
-
+                                        @can('manage-users')
+                                            <a class="dropdown-item" href="{{route('gereserveerd') }}">
+                                                {{'Gereserveerde autos'}}
+                                            </a>
+                                        @endcan
 
                                     <a class="dropdown-item" href="{{ route('user.edit') }}">
                                         {{ __('edit profile') }}
