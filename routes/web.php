@@ -31,8 +31,8 @@ Route::get('/index', function () {
 
 Auth::routes();
 
-Route::resource('reservering',\App\Http\Controllers\ReserveringController::class);
 Route::resource('autos', \App\Http\Controllers\AutoController::class );
+Route::resource('reservering',\App\Http\Controllers\ReserveringController::class);
 Route::resource('assortiment', \App\Http\Controllers\AssortimentController::class);
 
 
@@ -42,6 +42,10 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
 Route::get('/edit/user/', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 Route::post('/edit/user/', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
+Route::get('/reserervering/{auto_id}', [App\Http\Controllers\ReserveringController::class,'index'])->name( 'reservering.index');
+Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class,'store'])->name( 'reservering.store');
+
 
 
 Route::get('/gereserveerd', [App\Http\Controllers\Admin\Gereserveerd::class, 'index'])->name('gereserveerd');

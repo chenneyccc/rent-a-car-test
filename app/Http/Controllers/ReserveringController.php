@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Reservering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReserveringController extends Controller
 {
@@ -16,11 +17,11 @@ class ReserveringController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($auto_id)
     {
-
-        $reservering = Reservering::with('user')->get();
-        return view('reservering.index', compact('reservering'));
+        $reservering = Reservering::with('user','auto')->get();
+        $auto = Auto::find($auto_id);
+        return view('reservering.index', compact('reservering', 'auto'));
     }
 
     /**
@@ -39,14 +40,16 @@ class ReserveringController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $id)
+    public function store(Request $request)
     {
+//            $payload = $request->all();
+//            dd($payload);
          $this->attributes['user_id'] = Auth::user()->id;
             $request->validate([
             'begintijd' => 'required',
-            'eindtijd' => 'required'
+            'eindtijd' => 'required',
+            'auto_id' => 'required'
         ]);
-
 
 
         Reservering::create($request->input());
@@ -56,12 +59,13 @@ class ReserveringController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $auto_id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($auto_id)
     {
-        //
+        dd($auto_id);
+//        return view('reservering.index',['id'=>$auto_id]);
     }
 
     /**
@@ -98,4 +102,8 @@ class ReserveringController extends Controller
     {
         //
     }
+
+//    public function add($auto_id){
+////        dd($auto_id);
+//    }
 }
