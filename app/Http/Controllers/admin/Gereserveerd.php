@@ -16,10 +16,11 @@ class Gereserveerd extends Controller
      */
     public function index()
     {
+        //Hiervoor zorg ik met inner join dat ik 2 tables met elkaar voeg
         $data = DB::table('reserverings')
                 ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
                 ->join('users', 'users.id', '=', 'reserverings.user_id')
-                ->select('autos.merk','autos.kenteken', 'users.name', 'reserverings.begintijd', 'reserverings.eindtijd')
+                ->select('autos.merk','autos.kenteken', 'users.name', 'reserverings.begintijd', 'reserverings.eindtijd', 'reserverings.id')
                 ->get();
 
 
@@ -85,12 +86,13 @@ class Gereserveerd extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Reservering  $row
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservering $row )
     {
-        //
+        dd( $row =  Reservering::where('id', $row)->delete())  ;
+        return redirect()->route('gereserveerd');
     }
 
 }
