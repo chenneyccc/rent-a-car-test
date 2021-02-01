@@ -44,6 +44,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('assortiment.index')}}">Assortiment</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('contact')}}">Contact</a>
                         </li>
@@ -56,6 +57,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -82,6 +84,10 @@
                                             User Management
                                         </a>
                                     @endcan
+
+                        <a class="dropdown-item" href="{{route('user.factuur') }}">
+                            Factuur
+                        </a>
                                         @can('manage-users')
                                             <a class="dropdown-item" href="{{route('gereserveerd') }}">
                                                 {{'Gereserveerde autos'}}
@@ -107,7 +113,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 container">
             @yield('content')
         </main>
     </div>

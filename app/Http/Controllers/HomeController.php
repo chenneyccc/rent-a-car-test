@@ -11,6 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+    //hier controleer ik als de user is ingelogd is of niet.
     public function __construct()
     {
         $this->middleware('auth');

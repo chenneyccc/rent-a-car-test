@@ -1,4 +1,8 @@
 <?php
+/*Naam: Chenney Chang
+  Datum: 22-01-2021
+  */
+
 
 namespace App\Http\Controllers\admin;
 
@@ -16,7 +20,7 @@ class Gereserveerd extends Controller
      */
     public function index()
     {
-        //Hiervoor zorg ik met inner join dat ik 2 tables met elkaar voeg
+        //Hiervoor zorg ik met inner join dat ik 2 tables met elkaar voeg.
         $data = DB::table('reserverings')
                 ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
                 ->join('users', 'users.id', '=', 'reserverings.user_id')
@@ -24,7 +28,7 @@ class Gereserveerd extends Controller
                 ->get();
 
 
-
+        //Hier zorg ik ervoor dat de data te zien is in gereserveerd met een array.
         return view('gereserveerd', compact('data'));
     }
 
@@ -86,12 +90,13 @@ class Gereserveerd extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Reservering  $row
+     * @param  Reservering  $reservering
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservering $row )
+    //hier zorg ik ervoor dat de array van de reservering verwijderd kan worden.
+    public function destroy(Reservering $reservering)
     {
-        dd( $row =  Reservering::where('id', $row)->delete())  ;
+        dd( $reservering->delete());
         return redirect()->route('gereserveerd');
     }
 

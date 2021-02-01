@@ -13,6 +13,7 @@ class AutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //hier selecteer ik alle rows uit de table autos.
     public function index()
     {
         $autos = Auto::all();
@@ -35,6 +36,7 @@ class AutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /* Hier zorg ik ervoor dat er een request wordt gecreëerd*/
     public function store(StoreAutoRequest $request)
     {
         Auto::create($request->validated());
@@ -71,6 +73,9 @@ class AutoController extends Controller
      * @param  Auto  $auto
      * @return \Illuminate\Http\Response
      */
+
+    /*Hier wordt er een request gestuurd om een auto toe te voegen aan de pagina.
+        Voldoet de auto aan de eisen dan wordt hij terug gestuurd naar de pagina  */
     public function update(StoreAutoRequest $request, Auto $auto)
     {
         $auto->update($request->validated());
@@ -84,9 +89,11 @@ class AutoController extends Controller
      * @param  Auto  $auto
      * @return \Illuminate\Http\Response
      */
+
+    /*Hiervoor zorg ik ervoor dat de auto verwijderd wordt en geef ik toestemming om dit door te geven aan de pagina */
     public function destroy(Auto $auto)
     {
         $auto->delete();
-        return redirect()->route('autos.index');
+       return redirect()->route('autos.index');
     }
 }

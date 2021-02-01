@@ -17,6 +17,11 @@ class ReserveringController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /*Hier zorg ik ervoor dat er in de table reservering wordt gezocht naar de rows user en auto als de
+      rows worden gezocht geef ik aan om die informatie uit de table te halen met 'get'.
+      Hier zorg ik er ook voor dat de id van de auto gezocht wordt in de table auto.
+      Met return view geef ik toestemming om dit door te verwijzen naar de reservering pagina.*/
     public function index($auto_id)
     {
         $reservering = Reservering::with('user','auto')->get();
@@ -40,10 +45,10 @@ class ReserveringController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /*Hier zorg ik ervoor dat de user id wordt vastgesteld. Ook bevestig ik de request en moet het aan de volgende eisen voldoen. */
     public function store(Request $request)
     {
-//            $payload = $request->all();
-//            dd($payload);
          $this->attributes['user_id'] = Auth::user()->id;
             $request->validate([
             'begintijd' => 'required',
@@ -86,6 +91,8 @@ class ReserveringController extends Controller
      * @param  reservering $reservering
      * @return \Illuminate\Http\Response
      */
+
+    /*Hier zorg ik ervoor dat reservering een verzoek krijgt om de request te bevestigen om reseververingen up te daten.  */
     public function update(StoreReserveringRequest $request, reservering $reservering)
     {
        $reservering->update($request->validated());

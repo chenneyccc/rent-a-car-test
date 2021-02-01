@@ -57,6 +57,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /*Met de if statement authenticeer ik eerst de user. Daarna
+     zorg ik ervoor dat hij in de table user zoekt naar de id. Als de id van de user klopt kan de user
+     de data veranderen, als de id niet klopt wordt hij teruggestuurd naar de pagina */
     public function edit()
     {
         if(Auth::user()) {
@@ -79,6 +83,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /*Hiervoor zorg ik ervoor dat er in de user table wordt gezocht naar de id van de user en wordt de id vastgesteld.
+    met de if- statement zorg ik ervoor dat dat er een request wordt bevestigd daarna zorg ik er voor met een andere
+    if- statement dat er er request wordt gestuurd, als de request aan de eisen voldoet wordt de user geupdate */
     public function update(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -103,7 +111,7 @@ class UserController extends Controller
             return  redirect()->back();
         }
     }
-
+    /*Hier geef ik aan om in de table user te gaan zoeken naar de user id, als user id overeenkomt kan de user ze profiel bekijken */
     public function profile($id)
     {
         $user = User::find($id);

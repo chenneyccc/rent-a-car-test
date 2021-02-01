@@ -18,9 +18,9 @@
                 </form>
             </div>
 
-                <div class="card text-center">
+                <div class="card text-right">
                     <div class="card-body">
-                        <img src="{{ URL::to('../img/')}}/{{$auto->merk}}.png" class="card-img-top" alt="...">
+                        <img src="{{ URL::to('../img/')}}/{{$auto->merk}}.png" class="card-img-top" alt="..." style="width:400px; height:250px;">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
                         <p class="card-text">Prijs per dag: {{$auto->prijs_per_dag}}</p>

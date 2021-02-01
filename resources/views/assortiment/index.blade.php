@@ -7,7 +7,7 @@
 
             <div class="col-sm-4" style="width: 18rem;">
 
-                <div class="card text-center">
+                <div class="card text-center" style="height:450px;">
                     <div class="card-body">
                         <img src="{{ URL::to('../img/')}}/{{$auto->merk}}.png" class="card-img-top" alt="...">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>

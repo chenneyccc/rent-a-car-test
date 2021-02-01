@@ -33,11 +33,14 @@ Auth::routes();
 
 Route::resource('autos', \App\Http\Controllers\AutoController::class );
 Route::resource('reservering',\App\Http\Controllers\ReserveringController::class);
+Route::resource('gereserveerd',\App\Http\Controllers\Admin\Gereserveerd::class);
 Route::resource('assortiment', \App\Http\Controllers\AssortimentController::class);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+
+Route::get('/factuur/user/', [\App\Http\Controllers\FactuurController::class, 'index'])->name('user.factuur');
 
 Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
 Route::get('/edit/user/', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
@@ -48,7 +51,9 @@ Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class
 
 
 
+
 Route::get('/gereserveerd', [App\Http\Controllers\Admin\Gereserveerd::class, 'index'])->name('gereserveerd');
+Route::delete('/gereserveerd/[id}', [App\Http\Controllers\admin\Gereserveerd::class, 'destroy']);
 
 Route::prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::resource('/users', 'App\Http\Controllers\Admin\UsersController', ['except' => ['show', 'create', 'store']]);
