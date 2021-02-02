@@ -37,9 +37,9 @@ class StoreUsersRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'woonplaats' => 'required',
+//            'adres' => 'required',
+//            'postcode' => 'required',
+//            'woonplaats' => 'required',
 
         ];
     }

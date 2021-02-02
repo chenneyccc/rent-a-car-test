@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Voeg uw auto toe') }}</div>
-                    <form method="POST" action="{{route('autos.store')}}">
+                    <form method="POST" action="{{route('autos.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -69,6 +69,10 @@
                                     {{ __('Sla de auto op') }}
                                 </button>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Voeg hier de foto toe</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
                         </div>
                     </form>
                 </div>

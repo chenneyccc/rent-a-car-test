@@ -29,7 +29,8 @@ class StoreAutoRequest extends FormRequest
             'kenteken' => 'required',
             'type' => 'required',
             'merk' => 'required',
-            'prijs_per_dag' => 'required'
+            'prijs_per_dag' => 'required',
+            'image'=>'required'
         ];
     }
 }

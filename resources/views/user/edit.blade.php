@@ -39,6 +39,62 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{ __('Postcode') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="zip_code" type="text" value=" {{$user['zip_code']}}"  class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code">
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Woonplaats') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="city" type="text" value=" {{$user['city']}}" class="form-control @error('City') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
+
+                                    @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Telefoon nummer') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone_number" type="text" value=" {{$user['phone_number']}}" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+
+                                    @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Geboortedatum') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="date_of_birth" type="date" value=" {{$user['date_of_birth']}}" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth">
+
+                                    @error('date_of_birth')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
 
 
                             <div class="form-group row mb-0">

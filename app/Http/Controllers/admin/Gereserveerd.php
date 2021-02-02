@@ -98,7 +98,7 @@ class Gereserveerd extends Controller
     {
 
         $gereserveerd->delete();
-        return view('gereserveerd', compact('data'));    }
+        return view('gereserveerd', compact('data'));}
 
 }
 
