@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    {{--Hier begint de container--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Users</div>
-
                     <div class="card-body">
-
+                        {{--Hier begint de table--}}
                         <table class="table">
                             <thead>
                             <tr>
@@ -42,10 +42,12 @@
                                 </tr>
                             @endforeach
                             </tbody>
+                            {{--Hier eindigt de table--}}
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        {{--Hier eindigt de container--}}
     </div>
 @endsection

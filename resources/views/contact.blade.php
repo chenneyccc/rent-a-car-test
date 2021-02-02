@@ -43,7 +43,7 @@
     </style>
 
     <main role="main">
-
+        {{--Hier begint de container--}}
         <div class="container marketing">
 
             <!-- Three columns of text below the carousel -->
@@ -89,6 +89,6 @@
 
             <!-- /END THE FEATURETTES -->
 
-        </div><!-- /.container -->
+        </div> {{--Hier eindigt de container--}}
     </main>
 @endsection

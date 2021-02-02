@@ -34,12 +34,12 @@
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->merk}}</td>
                                     <td>{{$row->kenteken}}</td>
-                                    <td><form action="{{route('gereserveerd.destroy',$row->id)}}" method="post">
+                                    <td>
+                                        <form action="{{route('gereserveerd.destroy',$row->id)}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" onclick="return confirm('Ben je zeker dat je dit wilt verwijderen')"
                                                 class="btn btn-danger">Verwijderen</button>
-
                                     </form>
                                     </td>
                                 </tr>
@@ -48,8 +48,10 @@
 
                             </tbody>
                         </table>
+                        {{--Hier eindigt de table--}}
                     </div>
                 </div>
             </div>
         </div>
+    </div>{{--Hier eindigt de container--}}
 @endsection

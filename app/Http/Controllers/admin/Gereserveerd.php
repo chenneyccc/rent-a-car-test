@@ -90,15 +90,15 @@ class Gereserveerd extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Reservering  $reservering
+     * @param    Reservering $gereserveerd
      * @return \Illuminate\Http\Response
      */
     //hier zorg ik ervoor dat de array van de reservering verwijderd kan worden.
-    public function destroy(Reservering $reservering)
+    public function destroy(Reservering $gereserveerd)
     {
-        dd( $reservering->delete());
-        return redirect()->route('gereserveerd');
-    }
+
+        $gereserveerd->delete();
+        return view('gereserveerd', compact('data'));    }
 
 }
 

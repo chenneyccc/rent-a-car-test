@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    {{--Hier begint de container--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Edit user {{$user->name}}</div>
-
                     <div class="card-body">
-
                         <form action="{{route('admin.users.update', $user)}}" method="POST">
                             @csrf
                             {{ method_field('PUT') }}
@@ -26,5 +25,7 @@
                 </div>
             </div>
         </div>
+        {{--Hier eindigt de container--}}
     </div>
+
 @endsection

@@ -21,6 +21,8 @@ class StoreAutoRequest extends FormRequest
      *
      * @return array
      */
+
+    /*Hier zorg ik ervoor dat er eisen/regels worden gesteld waar de code aan moet voldoen als die een requests stuurt*/
     public function rules()
     {
         return [

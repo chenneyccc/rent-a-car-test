@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    {{--Hier begint de container--}}
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col md-auto">
@@ -28,5 +29,6 @@
                 </div>
             </div>
         </div>
+        {{--Hier eindigt de container--}}
     </div>
 @endsection

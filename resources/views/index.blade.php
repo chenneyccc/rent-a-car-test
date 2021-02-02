@@ -3,6 +3,8 @@
 @section('content')
 
 
+
+
     <main role="main">
  {{--Hier begint de pagina met een kleine beschrijving over het bedrijf--}}
         <section class="jumbotron text-center">
@@ -30,6 +32,7 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
+
 
                 {{--Hier begint een foto met een auto uit het assortiment met een kleine beschrijving--}}
                 <div class="row">
