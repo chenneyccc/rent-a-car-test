@@ -14,7 +14,7 @@ class AddColumnsToReserveringsTable extends Migration
     public function up()
     {
         Schema::table('reserverings', function (Blueprint $table) {
-                    $table->Boolean('status')->default(0);
+                    $table->string('status')->default('Niet klaargezet');
         });
     }
 
