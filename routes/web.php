@@ -33,7 +33,6 @@ Auth::routes();
 
 Route::resource('autos', \App\Http\Controllers\AutoController::class );
 Route::resource('reservering',\App\Http\Controllers\ReserveringController::class);
-Route::resource('gereserveerd',\App\Http\Controllers\Admin\Gereserveerd::class);
 Route::resource('assortiment', \App\Http\Controllers\AssortimentController::class);
 
 
@@ -50,12 +49,17 @@ Route::get('/reserervering/{auto_id}', [App\Http\Controllers\ReserveringControll
 Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class,'store'])->name( 'reservering.store');
 
 
+Route::get('/gereserveerd', [App\Http\Controllers\Admin\Gereserveerd::class, 'index'])->name('gereserveerd.index');
+Route::get('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\Gereserveerd::class, 'edit'])->name('gereserveerd.edit');
+Route::resource('gereserveerd',App\Http\Controllers\Admin\Gereserveerd::class);
+Route::post('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\Gereserveerd::class, 'update'])->name('gereserveerd.update');
 
 
-Route::get('/gereserveerd', [App\Http\Controllers\Admin\Gereserveerd::class, 'index'])->name('gereserveerd');
+
 Route::delete('/gereserveerd/{id}', [App\Http\Controllers\admin\Gereserveerd::class, 'destroy']);
 
 Route::prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+    Route::post('/edit/user/', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::resource('/users', 'App\Http\Controllers\Admin\UsersController', ['except' => ['show', 'create', 'store']]);
 
 

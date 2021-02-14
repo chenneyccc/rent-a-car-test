@@ -89,7 +89,7 @@
                             Factuur
                         </a>
                                         @can('manage-users')
-                                            <a class="dropdown-item" href="{{route('gereserveerd') }}">
+                                            <a class="dropdown-item" href="{{route('gereserveerd.index') }}">
                                                 {{'Gereserveerde autos'}}
                                             </a>
                                         @endcan

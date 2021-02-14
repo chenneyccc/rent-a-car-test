@@ -63,6 +63,14 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">foto</label>
+                            <div class="col-md-6">
+                            <input type="file" class="py-2"  name="image">
+                        </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -70,10 +78,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Voeg hier de foto toe</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
-                        </div>
+
                     </form>
                 </div>
             </div>

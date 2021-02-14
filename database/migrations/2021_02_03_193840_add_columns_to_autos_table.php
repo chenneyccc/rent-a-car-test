@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAutosTable extends Migration
+class AddColumnsToAutosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddAutosTable extends Migration
     public function up()
     {
         Schema::table('autos', function (Blueprint $table) {
-            $table->mediumText('image')->nullable();
+//        $table->Boolean('gereserveerd')->default(0);
+//        $table->Boolean('status')->default(0);
+        $table->String('image')->nullable();
         });
     }
 

@@ -7,6 +7,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GereserveerdRequest;
 use App\Models\Reservering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,67 +25,28 @@ class Gereserveerd extends Controller
         $data = DB::table('reserverings')
                 ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
                 ->join('users', 'users.id', '=', 'reserverings.user_id')
-                ->select('autos.merk','autos.kenteken', 'users.name', 'reserverings.begintijd', 'reserverings.eindtijd', 'reserverings.id')
+                ->select('autos.merk','autos.kenteken', 'users.name', 'reserverings.begintijd', 'reserverings.eindtijd', 'reserverings.id', 'reserverings.status')
                 ->get();
 
+        $gereserveerd = Reservering::all();
+//        dd($gereserveerd);
 
         //Hier zorg ik ervoor dat de data te zien is in gereserveerd met een array.
-        return view('gereserveerd', compact('data'));
+        return view('gereserveerd.index', compact('data', 'gereserveerd'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function edit( $gereserveerd_id)
     {
-        //
+        $reservering = Reservering::find($gereserveerd_id);
+        return view('gereserveerd.edit',compact('reservering'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(GereserveerdRequest $request, Reservering $gereserveerd_id)
     {
-        //
-    }
+       $gereserveerd_id->update($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return redirect('home');
     }
 
     /**
@@ -98,7 +60,7 @@ class Gereserveerd extends Controller
     {
 
         $gereserveerd->delete();
-        return view('gereserveerd', compact('data'));}
+        return view('gereserveerd.index', compact('data'));}
 
 }
 

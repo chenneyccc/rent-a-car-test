@@ -64,6 +64,10 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group text-center ">
+                            <input type="checkbox" name="1" value="{{$auto->status}}">
+                            <label>{{ 'niet beschikbaar'}}</label>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -5,15 +5,15 @@
     <div class="container">
         <div class="row">
             @foreach($autos as $auto)
-
+{{--                @if($auto->gereserveerd != 1)--}}
             <div class="col-sm-4" style="width: 18rem;">
-
                 <div class="card text-center" style="height:450px;">
                     <div class="card-body">
-                        <img src="{{ URL::to('../img/')}}/{{$auto->merk}}.png" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/'. $auto->image)}}" class="card-img-top">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
                         <p class="card-text">Prijs per dag: {{$auto->prijs_per_dag}}</p>
+                        <p class="card-text">Prijs per dag: {{$auto->gereserveerd}}</p>
                         {{--Dit zorgt ervoor dat je alleen een auto kan huren als je ingelogd bent --}}
                         @guest
                             @if (Route::has('login'))
@@ -25,11 +25,12 @@
                         @endguest
                     </div>
                 </div>
-
+{{--                @endif--}}
             </div>
-            @endforeach
-
+    @endforeach
         </div>
+
         {{--Hier eindigt de container--}}
     </div>
+
 @endsection

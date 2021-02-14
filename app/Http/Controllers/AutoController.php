@@ -39,20 +39,9 @@ class AutoController extends Controller
     /* Hier zorg ik ervoor dat er een request wordt gecreëerd*/
     public function store(StoreAutoRequest $request)
     {
-        Auto::create($request->validated());
-//
-//
-//// if statement image
-//        if ($request->hasFile('image')) {
-//            $file = request()->file('image');
-//            request()->file('image')->storeAs('image',''. '/'.$file, '');
-//            $extension = $file->getClientOriginalExtension(); //hier krijgt de image een extension
-//            $filename = time() . '.' . $extension;
-//            $file->move('public/img/', $filename);
-//            $auto->image = $filename;
-//        }
-
-        return redirect()->route('autos.index');
+        $auto = Auto::create($request->validated());
+        $this->storeImage($auto);
+        return redirect()->route('autos.index', compact('auto'));
     }
 
     /**
@@ -106,5 +95,14 @@ class AutoController extends Controller
     {
         $auto->delete();
        return redirect()->route('autos.index');
+    }
+
+    private function storeImage($auto)
+    {
+        if(request()->has('image')) {
+            $auto->update([
+                'image' => request()->image->store('image','public'),
+            ]);
+        }
     }
 }

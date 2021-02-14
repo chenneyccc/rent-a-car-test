@@ -4,7 +4,7 @@
     {{--Hier begint de container--}}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-14">
                 <div class="card">
 
                     <a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Overzicht</a>
@@ -21,6 +21,8 @@
                                 <th>Naam</th>
                                 <th>Auto merk</th>
                                 <th>Auto Kenteken</th>
+                                <th>Status</th>
+                                <th>Aanpassen</th>
                                 <th>Verwijderen</th>
                             </tr>
                             </thead>
@@ -34,6 +36,8 @@
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->merk}}</td>
                                     <td>{{$row->kenteken}}</td>
+                                        <td>{{$row->status}}</td>
+                                    <td><a href="{{route('gereserveerd.edit',$row->id)}}" class="btn btn-success">Wijzig</a> </td>
                                     <td>
                                         <form action="{{route('gereserveerd.destroy',$row->id)}}" method="post">
                                         @method('DELETE')

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Reservering;
+use App\Models\Auto;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,8 +19,14 @@ class FactuurController extends Controller
      */
     public function index()
     {
-        $reserveer = DB::select('select * from reserverings where user_id = ?', [Auth::id()]);
-        return view('user.factuur', compact('reserveer'));
+        $user_id = Auth::id();
+        $factuurs = DB::table('reserverings')
+            ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
+            ->join('users', 'users.id', '=', 'reserverings.user_id')
+            ->select('autos.merk', 'autos.kenteken', 'autos.type', 'autos.prijs_per_dag','users.name', 'users.adress', 'users.zip_code', 'users.city', 'reserverings.begintijd', 'reserverings.eindtijd')
+            ->where('reserverings.user_id', $user_id)
+            ->get();
+        return view('user.factuur', compact('factuurs'));
 
     }
 //->find(Auth::id(), 'user_id');

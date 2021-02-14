@@ -26,6 +26,7 @@ class ReserveringController extends Controller
     {
         $reservering = Reservering::with('user','auto')->get();
         $auto = Auto::find($auto_id);
+//        dd($auto);
         return view('reservering.index', compact('reservering', 'auto'));
     }
 
@@ -53,11 +54,13 @@ class ReserveringController extends Controller
             $request->validate([
             'begintijd' => 'required',
             'eindtijd' => 'required',
-            'auto_id' => 'required'
+            'auto_id' => 'required',
+            'gereserveerd' => 'required'
         ]);
 
-
         Reservering::create($request->input());
+
+        dd($request);
         return redirect('assortiment');
     }
 
@@ -69,8 +72,8 @@ class ReserveringController extends Controller
      */
     public function show($auto_id)
     {
-        dd($auto_id);
-//        return view('reservering.index',['id'=>$auto_id]);
+//        dd($auto_id);
+        return view('reservering.index',['id'=>$auto_id]);
     }
 
     /**

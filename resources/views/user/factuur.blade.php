@@ -3,18 +3,25 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header">Factuur</div>
                     <div class="card-body">
                         {{--Hier begint de table--}}
+
+
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Begintijd</th>
-                                <th scope="col">Eindtijd</th>
-                                <th scope="col">auto_id</th>
-                                <th scope="col">user_id</th>
+                                <th scope="col">Naam</th>
+                                <th scope="col">Adres</th>
+                                <th scope="col">Postcode</th>
+                                <th scope="col">Plaats</th>
+                                <th scope="col">Kenteken</th>
+                                <th scope="col">Merk</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Gereserveerde Periode</th>
+                                <th scope="col">Prijs per dag</th>
                                 {{--<th scope="col">{{ auth()->id() }}</th>--}}
 
                             </tr>
@@ -22,12 +29,20 @@
 
                             <tbody>
 
-                            @foreach($reserveer as $reservering)
+                            @foreach($factuurs as $factuur)
                                 <tr>
-                                    <td>{{$reservering->begintijd}}</td>
-                                    <td>{{$reservering->eindtijd}}</td>
-                                    <td>{{$reservering->auto_id}}</td>
-                                    <td>{{$reservering->user_id}}</td>
+                                    <td>{{$factuur->name}}</td>
+                                    <td>{{$factuur->adress}}</td>
+                                    <td>{{$factuur->zip_code}}</td>
+                                    <td>{{$factuur->city}}</td>
+                                    <td>{{$factuur->kenteken}}</td>
+                                    <td>{{$factuur->merk}}</td>
+                                    <td>{{$factuur->type}}</td>
+                                    <td>{{$factuur->begintijd}}/{{$factuur->eindtijd}} </td>
+                                    <td>€{{$factuur->prijs_per_dag}}</td>
+
+
+{{--                                    <td>{{$autos->auto->merk}}</td>--}}
                                     {{--<td>{{$reservering->users->eindtijd}}</td>--}}
 
                                 </tr>
