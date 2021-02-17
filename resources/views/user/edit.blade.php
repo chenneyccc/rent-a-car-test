@@ -30,9 +30,22 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" value=" {{$user['email']}}" class="form-control" name="email" autocomplete="email">
+                                    <input id="email" type="email" value=" {{$user['email']}}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 
                                     @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="adress" class="col-md-4 col-form-label text-md-right">{{ __('Adres') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="adress" type="text" value=" {{$user['adress']}}"  class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" required autocomplete="adress">
+
+                                    @error('adress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -45,7 +58,7 @@
                                 <div class="col-md-6">
                                     <input id="zip_code" type="text" value=" {{$user['zip_code']}}"  class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code">
 
-                                    @error('email')
+                                    @error('zip_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -82,19 +95,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Geboortedatum') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="date_of_birth" type="date" value=" {{$user['date_of_birth']}}" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth">
-
-                                    @error('date_of_birth')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
 
 
                             <div class="form-group row mb-0">

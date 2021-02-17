@@ -19,6 +19,7 @@
                                 <th>Begindatum</th>
                                 <th>Einddatum</th>
                                 <th>Naam</th>
+                                <th>Telefoonnummer</th>
                                 <th>Auto merk</th>
                                 <th>Auto Kenteken</th>
                                 <th>Status</th>
@@ -34,6 +35,7 @@
                                     <td>{{$row->begintijd}}</td>
                                     <td>{{$row->eindtijd}}</td>
                                     <td>{{$row->name}}</td>
+                                    <td>{{$row->phone_number}}</td>
                                     <td>{{$row->merk}}</td>
                                     <td>{{$row->kenteken}}</td>
                                         <td>{{$row->status}}</td>

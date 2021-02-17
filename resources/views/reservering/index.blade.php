@@ -13,16 +13,16 @@
                     <input value="1" name="gereserveerd" type="text">
 {{--                    <input id="auto_id" type="text" value=" {{$reservering['auto_id']}}" class="form-control @error('auto_id') is-invalid @enderror" name="auto_id" value="{{ old('name') }}" autocomplete="name" autofocus>--}}
                     <label for="begintijd" class="col-4 col-form-label ">{{ __('begintijd') }}</label>
-                    <input  type="date" name="begintijd" id="begintijd" class="form-control col-6" @error('begintijd') is-invalid @enderror" value="{{ old('begintijd') }}" required autocomplete="begintijd" autofocusclass="form-control">
+                    <input  type="date" name="begintijd" id="begintijd" class="form-control col-6"  value="{{ old('begintijd') }}" required autocomplete="begintijd" autofocusclass="form-control">
                     <label for="begintijd" class="col-4 col-form-label">{{ __('eindtijd') }}</label>
-                    <input type="date" name="eindtijd" id="eindtijd" class="form-control col-6" @error('eindtijd') is-invalid @enderror" value="{{ old('begintijd') }}" required autocomplete="eindtijd" autofocusclass="form-control">
+                    <input type="date" name="eindtijd" id="eindtijd" class="form-control col-6" value="{{ old('begintijd') }}" required autocomplete="eindtijd" autofocusclass="form-control">
                     <button type="submit" class="btn btn-success"> Reserveer nu</button>
                 </form>
             </div>
 
                 <div class="card text-right">
                     <div class="card-body">
-                        <img src="{{ URL::to('../img/')}}/{{$auto->merk}}.png" class="card-img-top" alt="..." style="width:400px; height:250px;">
+                        <img src="{{ asset('storage/'. $auto->image)}}" class="card-img-top" alt="..." style="width:400px; height:250px;">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
                         <p class="card-text">Prijs per dag: {{$auto->prijs_per_dag}}</p>

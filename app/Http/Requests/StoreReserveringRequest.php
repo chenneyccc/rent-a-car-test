@@ -25,10 +25,10 @@ class StoreReserveringRequest extends FormRequest
     public function rules()
     {
         return [
-//            'begintijd' => 'required',
-//            'eindtijd' => 'required',
-       //     'auto_id' => 'required',
-      //      'user_id' => 'required'
+            'begintijd' => 'required',
+            'eindtijd' => 'required',
+            'auto_id' => 'required',
+            'user_id' => 'required'
         ];
     }
 }

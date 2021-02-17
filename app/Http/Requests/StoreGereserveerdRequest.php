@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GereserveerdRequest extends FormRequest
+class StoreGereserveerdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,12 @@ class GereserveerdRequest extends FormRequest
     public function rules()
     {
         return [
-//            'status' =>'required'
+
+             'status' =>'max:255',
+             'begintijd' =>'max:255',
+             'eindtijd' =>'max:255',
+             'user_id' =>'max:255',
+            'auto_id' => 'max:255'
         ];
     }
 }

@@ -26,11 +26,11 @@ class StoreAutoRequest extends FormRequest
     public function rules()
     {
         return [
-//            'kenteken' => 'required',
-//            'type' => 'required',
-//            'merk' => 'required',
-//            'prijs_per_dag' => 'required',
-//            'image' => 'required',
+            'kenteken' => 'required',
+            'type' => 'required',
+            'merk' => 'required',
+            'prijs_per_dag' => 'required',
+            'image' => 'max:255',
 
 
 

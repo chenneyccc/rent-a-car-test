@@ -14,7 +14,7 @@
                                 <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('status') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="status" type="text" value=" {{$reservering['status']}}"  class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" required autocomplete="status">
+                                    <input id="status" type="text" value="{{$reservering->status}}"  class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" required autocomplete="status">
 
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -33,6 +33,5 @@
             </div>
         </div>
         {{--Hier eindigt de container--}}
-    </div>
 
 @endsection

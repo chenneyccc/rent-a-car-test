@@ -60,7 +60,7 @@ class ReserveringController extends Controller
 
         Reservering::create($request->input());
 
-        dd($request);
+      //  dd($request);
         return redirect('assortiment');
     }
 

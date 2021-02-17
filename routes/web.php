@@ -49,14 +49,14 @@ Route::get('/reserervering/{auto_id}', [App\Http\Controllers\ReserveringControll
 Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class,'store'])->name( 'reservering.store');
 
 
-Route::get('/gereserveerd', [App\Http\Controllers\Admin\Gereserveerd::class, 'index'])->name('gereserveerd.index');
-Route::get('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\Gereserveerd::class, 'edit'])->name('gereserveerd.edit');
-Route::resource('gereserveerd',App\Http\Controllers\Admin\Gereserveerd::class);
-Route::post('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\Gereserveerd::class, 'update'])->name('gereserveerd.update');
+Route::get('/gereserveerd', [App\Http\Controllers\Admin\GereserveerdController::class, 'index'])->name('gereserveerd.index');
+Route::get('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\GereserveerdController::class, 'edit'])->name('gereserveerd.edit');
+Route::resource('gereserveerd',App\Http\Controllers\Admin\GereserveerdController::class);
+Route::post('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\GereserveerdController::class, 'update'])->name('gereserveerd.update');
 
 
 
-Route::delete('/gereserveerd/{id}', [App\Http\Controllers\admin\Gereserveerd::class, 'destroy']);
+Route::delete('/gereserveerd/{id}', [App\Http\Controllers\admin\GereserveerdController::class, 'destroy']);
 
 Route::prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::post('/edit/user/', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');

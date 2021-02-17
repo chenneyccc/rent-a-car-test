@@ -34,12 +34,15 @@ class StoreUsersRequest extends FormRequest
     public function rules()
     {
         return [
+
+
             'name' => 'required',
             'email' => 'required',
+            'adress' => 'required',
+            'zip_code' => 'required',
+            'city' => 'required',
+            'phone_number' => 'required',
             'password' => 'required',
-//            'adres' => 'required',
-//            'postcode' => 'required',
-//            'woonplaats' => 'required',
 
         ];
     }

@@ -23,7 +23,7 @@ class FactuurController extends Controller
         $factuurs = DB::table('reserverings')
             ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
             ->join('users', 'users.id', '=', 'reserverings.user_id')
-            ->select('autos.merk', 'autos.kenteken', 'autos.type', 'autos.prijs_per_dag','users.name', 'users.adress', 'users.zip_code', 'users.city', 'reserverings.begintijd', 'reserverings.eindtijd')
+            ->select('autos.merk', 'autos.kenteken', 'autos.type', 'autos.prijs_per_dag','users.name', 'users.adress', 'users.zip_code', 'users.city','users.phone_number', 'reserverings.begintijd', 'reserverings.eindtijd')
             ->where('reserverings.user_id', $user_id)
             ->get();
         return view('user.factuur', compact('factuurs'));

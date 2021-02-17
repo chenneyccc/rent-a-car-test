@@ -7,12 +7,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GereserveerdRequest;
+use App\Http\Requests\StoreGereserveerdRequest;
 use App\Models\Reservering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Gereserveerd extends Controller
+class GereserveerdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,11 +25,11 @@ class Gereserveerd extends Controller
         $data = DB::table('reserverings')
                 ->join('autos', 'autos.id', '=', 'reserverings.auto_id')
                 ->join('users', 'users.id', '=', 'reserverings.user_id')
-                ->select('autos.merk','autos.kenteken', 'users.name', 'reserverings.begintijd', 'reserverings.eindtijd', 'reserverings.id', 'reserverings.status')
+                ->select('autos.merk','autos.kenteken', 'users.name','users.phone_number', 'reserverings.begintijd', 'reserverings.eindtijd', 'reserverings.id', 'reserverings.status')
                 ->get();
 
         $gereserveerd = Reservering::all();
-//        dd($gereserveerd);
+
 
         //Hier zorg ik ervoor dat de data te zien is in gereserveerd met een array.
         return view('gereserveerd.index', compact('data', 'gereserveerd'));
@@ -41,11 +41,15 @@ class Gereserveerd extends Controller
         $reservering = Reservering::find($gereserveerd_id);
         return view('gereserveerd.edit',compact('reservering'));
     }
-
-    public function update(GereserveerdRequest $request, Reservering $gereserveerd_id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Reservering  $gereserveerd
+     * @return \Illuminate\Http\Response
+     */
+    public function update(StoreGereserveerdRequest $request, Reservering $gereserveerd)
     {
-       $gereserveerd_id->update($request->validated());
-
+        $gereserveerd->update($request->validated());
         return redirect('home');
     }
 
@@ -59,8 +63,8 @@ class Gereserveerd extends Controller
     public function destroy(Reservering $gereserveerd)
     {
 
-        $gereserveerd->delete();
-        return view('gereserveerd.index', compact('data'));}
+        $data = $gereserveerd->delete();
+        return view('index', compact('data'));}
 
 }
 

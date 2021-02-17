@@ -16,7 +16,7 @@ class AutoController extends Controller
     //hier selecteer ik alle rows uit de table autos.
     public function index()
     {
-        $autos = Auto::all();
+    $autos = Auto::all();
         return view('autos.index', compact('autos'));
     }
 

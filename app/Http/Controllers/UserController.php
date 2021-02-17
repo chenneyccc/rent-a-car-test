@@ -95,6 +95,12 @@ class UserController extends Controller
             $validate = $request->validate([
                 'name' => 'required|min:2',
                 'email' => 'required|email|unique:users',
+                'adress' => 'required|string',
+                'zip_code' => 'required|max:6|string',
+                'city' => 'required|string',
+                'phone_number' => 'required|max:10|string'
+
+
 
             ]);
         }
@@ -102,6 +108,10 @@ class UserController extends Controller
         if($user) {
             $user->name = $request['name'];
             $user->email = $request['email'];
+            $user->adress = $request['adress'];
+            $user->zip_code = $request['zip_code'];
+            $user->city = $request['city'];
+            $user->phone_number = $request['phone_number'];
 
 
             $user->save();

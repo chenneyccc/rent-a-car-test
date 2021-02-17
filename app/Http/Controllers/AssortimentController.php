@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auto;
+use App\Models\Reservering;
 use Illuminate\Http\Request;
 
 class AssortimentController extends Controller
@@ -16,6 +17,10 @@ class AssortimentController extends Controller
     public function index()
     {
         $autos = Auto::all();
+
+//        if (Reservering::where('auto_id', '=', ('email'))->exists()) {
+//            // user found
+//        }
         return view('assortiment.index', compact('autos'));    }
 
     /**
