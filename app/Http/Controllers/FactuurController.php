@@ -8,7 +8,7 @@ use App\Models\Reservering;
 use App\Models\Auto;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use carbon\carbon;
 
 class FactuurController extends Controller
 {
@@ -26,6 +26,8 @@ class FactuurController extends Controller
             ->select('autos.merk', 'autos.kenteken', 'autos.type', 'autos.prijs_per_dag','users.name', 'users.adress', 'users.zip_code', 'users.city','users.phone_number', 'reserverings.begintijd', 'reserverings.eindtijd')
             ->where('reserverings.user_id', $user_id)
             ->get();
+
+
         return view('user.factuur', compact('factuurs'));
 
     }

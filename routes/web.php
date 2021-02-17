@@ -41,6 +41,7 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 
 Route::get('/factuur/user/', [\App\Http\Controllers\FactuurController::class, 'index'])->name('user.factuur');
 
+
 Route::get('/user/{id}', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
 Route::get('/edit/user/', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 Route::post('/edit/user/', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
