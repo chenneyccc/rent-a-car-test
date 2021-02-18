@@ -2,18 +2,23 @@
 
 @section('content')
     {{--hier begint de container--}}
+
     <div class="container">
+        @if (session('alert'))
+            <div class="alert alert-success">
+                {{ session('alert') }}
+            </div>
+        @endif
         <div class="row">
             @foreach($autos as $auto)
-{{--                @if($auto->gereserveerd != 1)--}}
-            <div class="col-sm-4" style="width: 18rem;">
+                @if($auto->auto_id < 1 )
+                    <div class="col-sm-4" style="width: 18rem;">
                 <div class="card text-center" style="height:450px;">
                     <div class="card-body">
                         <img src="{{ asset('storage/'. $auto->image)}}" class="card-img-top">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
                         <p class="card-text">Prijs per dag: {{$auto->prijs_per_dag}}</p>
-                        <p class="card-text">Prijs per dag: {{$auto->gereserveerd}}</p>
                         {{--Dit zorgt ervoor dat je alleen een auto kan huren als je ingelogd bent --}}
                         @guest
                             @if (Route::has('login'))
@@ -27,6 +32,7 @@
                 </div>
 {{--                @endif--}}
             </div>
+        @endif
     @endforeach
         </div>
 

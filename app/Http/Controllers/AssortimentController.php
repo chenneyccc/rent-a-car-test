@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Auto;
 use App\Models\Reservering;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AssortimentController extends Controller
 {
@@ -16,12 +17,18 @@ class AssortimentController extends Controller
     //Hier selecteer ik alle rows uit de table autos
     public function index()
     {
-        $autos = Auto::all();
+//        $autos = Auto::all();
+//
+//        $available = DB::table('autos')->select('id')->get();
+//        $gereserveerd = DB::table('reserverings')->select('auto_id')->get();
 
-//        if (Reservering::where('auto_id', '=', ('email'))->exists()) {
-//            // user found
-//        }
-        return view('assortiment.index', compact('autos'));    }
+       $autos =     DB::table('autos')
+           ->leftJoin('reserverings', 'reserverings.auto_id', '=', 'autos.id')
+           ->select('autos.id', 'autos.kenteken', 'autos.merk', 'autos.type', 'autos.prijs_per_dag', 'autos.image','reserverings.auto_id')
+           ->get();
+
+        return view('assortiment.index', compact('autos'));
+        }
 
     /**
      * Show the form for creating a new resource.

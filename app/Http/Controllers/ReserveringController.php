@@ -22,7 +22,7 @@ class ReserveringController extends Controller
       rows worden gezocht geef ik aan om die informatie uit de table te halen met 'get'.
       Hier zorg ik er ook voor dat de id van de auto gezocht wordt in de table auto.
       Met return view geef ik toestemming om dit door te verwijzen naar de reservering pagina.*/
-    public function index($auto_id)
+    public function index( $auto_id)
     {
         $reservering = Reservering::with('user','auto')->get();
         $auto = Auto::find($auto_id);
@@ -54,14 +54,13 @@ class ReserveringController extends Controller
             $request->validate([
             'begintijd' => 'required',
             'eindtijd' => 'required',
-            'auto_id' => 'required',
-            'gereserveerd' => 'required'
+            'auto_id' => 'required'
         ]);
 
         Reservering::create($request->input());
 
       //  dd($request);
-        return redirect('assortiment');
+        return redirect('assortiment')->with('alert', 'De auto is succesvol gereserveerd en de factuur is nu beschikbaar!');
     }
 
     /**
