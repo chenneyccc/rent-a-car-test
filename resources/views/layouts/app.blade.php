@@ -114,6 +114,7 @@
             </div>
         </nav>
         <main class="py-4 container">
+            @include('alerts.index')
             @yield('content')
         </main>
     </div>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Auto;
 use App\Models\Reservering;
+use Cron\AbstractField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AssortimentController extends Controller
 {
@@ -15,17 +17,47 @@ class AssortimentController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Hier selecteer ik alle rows uit de table autos
-    public function index()
+    public function index(Request $request)
     {
-//        $autos = Auto::all();
-//
-//        $available = DB::table('autos')->select('id')->get();
-//        $gereserveerd = DB::table('reserverings')->select('auto_id')->get();
 
-       $autos =     DB::table('autos')
-           ->leftJoin('reserverings', 'reserverings.auto_id', '=', 'autos.id')
-           ->select('autos.id', 'autos.kenteken', 'autos.merk', 'autos.type', 'autos.prijs_per_dag', 'autos.image','reserverings.auto_id')
-           ->get();
+
+//        $begintijd = '2021-01-01';
+//        $eindtijd = "2022-01-01";
+//        $reservations = Reservering::where('begintijd', '>=', $begintijd)
+//            ->where('eindtijd', '<=', $eindtijd)
+//            ->get();
+//
+//        if($request->exists($begintijd, $eindtijd)){
+
+//
+//            $reservations = Reservering::where('begintijd', '>=', $begintijd)
+//                ->where('eindtijd', '<=', $eindtijd)
+//                ->get();
+//        }
+//        dd($reservations);
+
+
+
+
+
+
+
+//        $autos =     DB::table('autos')
+//           ->Join('reserverings', 'reserverings.auto_id', '=', 'autos.id')
+//           ->select('autos.id', 'autos.kenteken', 'autos.merk', 'autos.type', 'autos.prijs_per_dag', 'autos.image','reserverings.auto_id')
+//           ->get();
+//
+///             $begintijd = $request->input('begintijd');
+//            $eindtijd = $request->input('eindtijd');
+
+
+        $begintijd = $request->input('begintijd');
+        $eindtijd = $request->input('begintijd');
+        $reservering = Reservering::whereRaw('(now() between begintijd and eindtijd)')->get();
+
+        dd($reservering);
+
+        $autos = Auto::all();
 
         return view('assortiment.index', compact('autos'));
         }
@@ -94,5 +126,13 @@ class AssortimentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dateSearch(Request $request)
+    {
+        $begintijd = $request->input('begintijd');
+        $eindtijd = $request->input('eindtijd');
+        dd($request);
+        return view('assortiment.index');
     }
 }

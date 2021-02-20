@@ -36,6 +36,7 @@ Route::resource('reservering',\App\Http\Controllers\ReserveringController::class
 Route::resource('assortiment', \App\Http\Controllers\AssortimentController::class);
 
 
+//Route::get('/assortiment',[App\Http\Controllers\AssortimentController::class, 'dateSearch'])->name('assortiment.dateSearch');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 

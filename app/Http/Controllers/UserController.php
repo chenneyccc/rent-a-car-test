@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -116,10 +116,12 @@ class UserController extends Controller
 
             $user->save();
 
+
             return redirect()->back();
         } else{
             return  redirect()->back();
         }
+
     }
     /*Hier geef ik aan om in de table user te gaan zoeken naar de user id, als user id overeenkomt kan de user ze profiel bekijken */
     public function profile($id)

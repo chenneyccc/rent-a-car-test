@@ -4,6 +4,21 @@
     {{--hier begint de container--}}
 
     <div class="container">
+        <form class="form-inline" method="GET" action={{route('assortiment.index')}}>
+
+            @csrf
+            <label class="sr-only" for="inlineFormInput">Begintijd</label>
+            <input type="date" class="form-control mb-2 mr-sm-2 mb-sm-0" name="begintijd" id="inlineFormInput" placeholder="Jane Doe">
+
+            <label class="sr-only" for="inlineFormInputGroup">Eindtijd</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="date" class="form-control" name="eindtijd" id="inlineFormInputGroup" placeholder="Username">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Zoeken</button>
+        </form>
+        </br>
+
         @if (session('alert'))
             <div class="alert alert-success">
                 {{ session('alert') }}

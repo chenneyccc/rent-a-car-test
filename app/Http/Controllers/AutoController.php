@@ -63,6 +63,7 @@ class AutoController extends Controller
      */
     public function edit(Auto $auto)
     {
+
         return view('autos.edit', compact('auto'));
     }
 
@@ -78,6 +79,7 @@ class AutoController extends Controller
         Voldoet de auto aan de eisen dan wordt hij terug gestuurd naar de pagina  */
     public function update(StoreAutoRequest $request, Auto $auto)
     {
+
         $auto->update($request->validated());
 
         return redirect()->route('autos.index');
