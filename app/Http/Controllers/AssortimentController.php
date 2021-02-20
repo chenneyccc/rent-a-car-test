@@ -19,45 +19,20 @@ class AssortimentController extends Controller
     //Hier selecteer ik alle rows uit de table autos
     public function index(Request $request)
     {
+        if($request->exists('begintijd', 'eindtijd')) {
+            $begintijd = $request->input('begintijd');
+            $eindtijd = $request->input('eindtijd');
 
-
-//        $begintijd = '2021-01-01';
-//        $eindtijd = "2022-01-01";
-//        $reservations = Reservering::where('begintijd', '>=', $begintijd)
-//            ->where('eindtijd', '<=', $eindtijd)
-//            ->get();
-//
-//        if($request->exists($begintijd, $eindtijd)){
-
-//
-//            $reservations = Reservering::where('begintijd', '>=', $begintijd)
+            $autos = DB::table('autos')
+                ->leftJoin('reserverings', 'reserverings.auto_id', '=', 'autos.id')
+//                ->where('begintijd', '>=', $begintijd)
 //                ->where('eindtijd', '<=', $eindtijd)
-//                ->get();
-//        }
-//        dd($reservations);
+                ->get();
+            dd($autos);
+        } else{
+            $autos = Auto::all();
 
-
-
-
-
-
-
-//        $autos =     DB::table('autos')
-//           ->Join('reserverings', 'reserverings.auto_id', '=', 'autos.id')
-//           ->select('autos.id', 'autos.kenteken', 'autos.merk', 'autos.type', 'autos.prijs_per_dag', 'autos.image','reserverings.auto_id')
-//           ->get();
-//
-///             $begintijd = $request->input('begintijd');
-//            $eindtijd = $request->input('eindtijd');
-
-
-        $begintijd = $request->input('begintijd');
-        $eindtijd = $request->input('begintijd');
-        $reservering = Reservering::whereRaw('(now() between begintijd and eindtijd)')->get();
-
-        dd($reservering);
-
-        $autos = Auto::all();
+        }
 
         return view('assortiment.index', compact('autos'));
         }

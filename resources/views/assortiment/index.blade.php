@@ -26,7 +26,7 @@
         @endif
         <div class="row">
             @foreach($autos as $auto)
-                @if($auto->auto_id < 1 )
+                {{--@if($auto->id < 1 )--}}
                     <div class="col-sm-4" style="width: 18rem;">
                 <div class="card text-center" style="height:450px;">
                     <div class="card-body">
@@ -47,7 +47,7 @@
                 </div>
 {{--                @endif--}}
             </div>
-        @endif
+
     @endforeach
         </div>
 
