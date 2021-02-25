@@ -20,7 +20,9 @@
                                 <th scope="col">Gereserveerde Periode</th>
                                 <th scope="col">Totale Dagen</th>
                                 <th scope="col">Prijs Per dag</th>
-                                <th scope="col">Totale Prijs</th>
+                                <th scope="col">Totale Prijs Exc. BTW</th>
+                                <th scope="col">Totale Prijs Inc. BTW</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -49,6 +51,19 @@
                                     </td>
                                     <td>€{{$factuur->prijs_per_dag}}</td>
                                     <td>€{{$factuur->prijs_per_dag * $days}}</td>
+
+                                    <td>
+                                        <?php
+                                          $price= $factuur->prijs_per_dag *$days;
+                                          $taxRate=21;
+                                          $tax=$price*$taxRate/100;
+                                          $total=$price+$tax;
+
+                                          echo '€', $total;
+                                         ?>
+                                    </td>
+
+
                                 </tr>
                             @endforeach
                             </tbody>

@@ -33,7 +33,7 @@
                         <img src="{{ asset('storage/'. $auto->image)}}" class="card-img-top">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
-                        <p class="card-text">Prijs per dag: {{$auto->prijs_per_dag}}</p>
+                        <p class="card-text">Prijs per dag: €{{$auto->prijs_per_dag}},-</p>
                         {{--Dit zorgt ervoor dat je alleen een auto kan huren als je ingelogd bent --}}
                         @guest
                             @if (Route::has('login'))
@@ -45,10 +45,13 @@
                         @endguest
                     </div>
                 </div>
-{{--                @endif--}}
             </div>
 
     @endforeach
+
+
+
+
         </div>
 
         {{--Hier eindigt de container--}}

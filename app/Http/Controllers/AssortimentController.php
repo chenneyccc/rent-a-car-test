@@ -8,6 +8,8 @@ use Cron\AbstractField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class AssortimentController extends Controller
 {
@@ -16,25 +18,32 @@ class AssortimentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     //Hier selecteer ik alle rows uit de table autos
     public function index(Request $request)
     {
         if($request->exists('begintijd', 'eindtijd')) {
+
             $begintijd = $request->input('begintijd');
             $eindtijd = $request->input('eindtijd');
 
-            $autos = DB::table('autos')
-                ->leftJoin('reserverings', 'reserverings.auto_id', '=', 'autos.id')
-//                ->where('begintijd', '>=', $begintijd)
-//                ->where('eindtijd', '<=', $eindtijd)
-                ->get();
-            dd($autos);
+            $autos = Auto::whereDoesntHave('reserveringen', function(Builder $query) use ($begintijd, $eindtijd, $request)  {
+
+                $query->where('begintijd', '<=', $begintijd);
+                $query->Where('eindtijd' , '>=', $eindtijd);
+            })->get();
+
+
+            return view('assortiment.index', compact('autos'));
+
         } else{
             $autos = Auto::all();
+            return view('assortiment.index', compact('autos'));
 
-        }
+    }
 
-        return view('assortiment.index', compact('autos'));
         }
 
     /**
