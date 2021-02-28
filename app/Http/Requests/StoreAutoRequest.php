@@ -30,7 +30,6 @@ class StoreAutoRequest extends FormRequest
             'type' => 'required',
             'merk' => 'required',
             'prijs_per_dag' => 'required',
-            'image' => 'max:255',
 
 
 
