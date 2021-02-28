@@ -69,7 +69,7 @@
                             </tbody>
                         </table>
                         <div>
-                        <section>*Alle prijzen zijn inclusief btw*</section>
+                        <section>*Alle prijzen zijn exclusief btw*</section>
                     </div>
                 </div>
             </div>
