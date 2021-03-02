@@ -19,9 +19,13 @@ class CreateReserveringsTable extends Migration
             $table->date('eindtijd');
             $table->timestamps();
             $table->integer('auto_id')->unsigned();
-            $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
+
+        });
+
+        Schema::table('reserverings', function($table) {
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
 
         });
     }
