@@ -13,6 +13,7 @@ class AddForeignKeyTable extends Migration
      */
     public function up()
     {
+        //hello world
         Schema::table('reserverings', function (Blueprint $table) {
             $table->unsignedBigInteger('auto_id');
             $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
