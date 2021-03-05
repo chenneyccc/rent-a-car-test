@@ -15,9 +15,9 @@ class AddForeignKeyTable extends Migration
     {
         //hello world
         Schema::table('reserverings', function (Blueprint $table) {
-            $table->increments('auto_id');
+            $table->unsignedInteger('auto_id');
             $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
-            $table->increments('user_id');
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }
