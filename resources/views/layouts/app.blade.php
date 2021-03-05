@@ -78,12 +78,12 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @can('manage-users')
-                                        <a class="dropdown-item" href="{{route('admin.users.index') }}">
-                                            User Management
-                                        </a>
-                                    @endcan
+                                {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+                                    {{--@can('manage-users')--}}
+                                        {{--<a class="dropdown-item" href="{{route('admin.users.index') }}">--}}
+                                            {{--User Management--}}
+                                        {{--</a>--}}
+                                    {{--@endcan--}}
 
                         <a class="dropdown-item" href="{{route('user.factuur') }}">
                             Factuur
