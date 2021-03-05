@@ -17,16 +17,12 @@ class CreateReserveringsTable extends Migration
             $table->id();
             $table->date('begintijd');
             $table->date('eindtijd');
+            $table->string('status')->default('Niet klaargezet');
             $table->timestamps();
-            $table->integer('auto_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-
-        });
-
-        Schema::table('reserverings', function($table) {
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
-
+//            $table->integer('auto_id')->unsigned();
+//            $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
+//            $table->integer('user_id')->unsigned();
+//            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }
 

@@ -19,6 +19,7 @@ class CreateAutosTable extends Migration
             $table->string('merk');
             $table->string('type');
             $table->string('prijs_per_dag');
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
     }

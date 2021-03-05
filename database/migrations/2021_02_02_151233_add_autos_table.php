@@ -15,7 +15,6 @@ class AddAutosTable extends Migration
     {
         Schema::table('autos', function (Blueprint $table) {
             $table->mediumText('image')->nullable();
-            $table->Boolean('gereserveerd')->nullable();
         });
     }
 
