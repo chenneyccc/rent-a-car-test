@@ -103,8 +103,10 @@ class AutoController extends Controller
     {
         if(request()->has('image')) {
             $auto->update([
-                'image' => request()->image->store('image','public'),
+                'image' => request()->image->store('img', 'public '),
+
             ]);
+
         }
     }
 }

@@ -51,10 +51,7 @@ Route::get('/reserervering/{auto_id}', [App\Http\Controllers\ReserveringControll
 Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class,'store'])->name( 'reservering.store');
 
 
-Route::get('/gereserveerd', [App\Http\Controllers\Admin\GereserveerdController::class, 'index'])->name('gereserveerd.index');
-Route::get('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\GereserveerdController::class, 'edit'])->name('gereserveerd.edit');
 Route::resource('gereserveerd',App\Http\Controllers\Admin\GereserveerdController::class);
-Route::post('gereserveerd/{gereserveerd_id}', [App\Http\Controllers\Admin\GereserveerdController::class, 'update'])->name('gereserveerd.update');
 
 
 
