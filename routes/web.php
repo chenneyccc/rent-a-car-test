@@ -51,13 +51,12 @@ Route::get('/reserervering/{auto_id}', [App\Http\Controllers\ReserveringControll
 Route::post('/reserervering', [App\Http\Controllers\ReserveringController::class,'store'])->name( 'reservering.store');
 
 
-Route::resource('gereserveerd',App\Http\Controllers\Admin\GereserveerdController::class);
 
+Route::resource('gereserveerd',App\Http\Controllers\admin\GereserveerdController::class);
 
-
-Route::delete('/gereserveerd/{id}', [App\Http\Controllers\admin\GereserveerdController::class, 'destroy']);
 
 Route::prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+
     Route::post('/edit/user/', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::resource('/users', 'App\Http\Controllers\Admin\UsersController', ['except' => ['show', 'create', 'store']]);
 
