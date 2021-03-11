@@ -108,7 +108,7 @@ class AutoController extends Controller
         if(request()->has('image')) {
             $image = request()->file('image');
             $image_name = $image->getClientOriginalName();
-            $auto->update(['image' => request()->image->store('img', 'public' ),
+            $auto->update(['image' => request()->image->store('/', 'public' ),
 
             ]);
 
