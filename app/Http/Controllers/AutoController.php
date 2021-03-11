@@ -80,7 +80,11 @@ class AutoController extends Controller
     public function update(StoreAutoRequest $request, Auto $auto)
     {
 
-        $auto->update($request->validated());
+        if(request()->has('image')) {
+            $auto->update([
+                'image' => request()->image->store('image   ','public'),
+            ]);
+        }
 
         return redirect()->route('autos.index');
     }
@@ -102,11 +106,21 @@ class AutoController extends Controller
     private function storeImage($auto)
     {
         if(request()->has('image')) {
-            $auto->update([
-                'image' => request()->image->store('img', 'public '),
+            $image = request()->file('image');
+            $image_name = $image->getClientOriginalName();
+            $auto->update(['image' => request()->image->store('img', 'public' ),
 
             ]);
 
         }
     }
 }
+//if($request->hasFile('image'))
+//{
+//    $destination_path = 'public/img';
+//    $image = $request->file('image');
+//    $image_name = $image->getClientOriginalName();
+//    $request->file('image')->storeAs($destination_path,$image_name);
+//
+//
+//}
