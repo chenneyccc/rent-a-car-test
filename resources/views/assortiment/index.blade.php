@@ -31,7 +31,7 @@
                 <div class="card text-center" style="height:450px;">
                     <div class="card-body">
                         {{--<img src="{{ asset( $auto->image)}}" class="card-img-top">--}}
-                        <img src="{{ url('storage/'.$auto->image) }}" class="card-img-top">
+                        <img src="{{ asset('storage/'. $auto->image)}}" class="card-img-top">
                         <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                         <p class="card-text">Kenteken: {{$auto->kenteken}}</p>
                         <p class="card-text">Prijs per dag: €{{$auto->prijs_per_dag}},-</p>
