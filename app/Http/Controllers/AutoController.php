@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAutoRequest;
 use App\Models\Auto;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AutoController extends Controller
 {
@@ -103,12 +103,20 @@ class AutoController extends Controller
        return redirect()->route('autos.index');
     }
 
-    private function storeImage($auto)
+    private function storeImage($path)
     {
         if(request()->has('image')) {
-            $auto->update([
-                'image' => request()->image->store('image','public'),
+            $path = request()->file('image')->store('images', 's3');
+            $image = Auto::create([
+                'filename' => basename($path),
+                'kenteken' => 'required',
+                'type' => 'required',
+                'merk' => 'required',
+                'prijs_per_dag' => 'required',
+                'url' => Storage::disk('s3')->url($path)
+
             ]);
+
 
         }
     }
