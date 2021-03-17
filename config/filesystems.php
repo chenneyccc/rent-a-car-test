@@ -44,10 +44,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => 'AKIA5IWGWXF657DT2YXD',
+            'secret' => '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',
+            'region' => 'us-east-2',
+            'bucket' => 'chenney-rent-a-car',
             'url' => env('AWS_URL'),
             'visibility' => 'public',
             'endpoint' => env('AWS_ENDPOINT'),
