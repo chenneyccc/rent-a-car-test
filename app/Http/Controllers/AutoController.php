@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAutoRequest;
 use App\Models\Auto;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AutoController extends Controller
@@ -39,8 +40,21 @@ class AutoController extends Controller
     /* Hier zorg ik ervoor dat er een request wordt gecreëerd*/
     public function store(StoreAutoRequest $request)
     {
-        $auto = Auto::create($request->validated());
-        $this->storeImage($auto);
+        $path = $request->file('image')->store('images', 's3');
+
+
+
+
+         $auto = Auto::create([
+             'url' => Storage::disk('s3')->url($path),
+             'merk' => $request->input('merk'),
+             'kenteken' =>$request->input('kenteken'),
+             'type' =>$request->input('type'),
+             'prijs_per_dag' =>$request->input('prijs_per_dag'),
+         ]);
+         dd($auto);
+
+//        $this->storeImage($auto);
         return redirect()->route('autos.index', compact('auto'));
     }
 
@@ -103,23 +117,17 @@ class AutoController extends Controller
        return redirect()->route('autos.index');
     }
 
-    private function storeImage($path)
-    {
-        if(request()->has('image')) {
-            $path = request()->file('image')->store('images', 's3');
-            $image = Auto::create([
-                'filename' => basename($path),
-                'kenteken' => 'required',
-                'type' => 'required',
-                'merk' => 'required',
-                'prijs_per_dag' => 'required',
-                'url' => Storage::disk('s3')->url($path)
-
-            ]);
-
-
-        }
-    }
+//    private function storeImage($path)
+//    {
+//        if(request()->has('image')) {
+//            $path = request()->file('image')->store('images', 's3');
+//            $auto = Auto::create(request([
+//                'url' => Storage::disk('s3')->url($path)
+//                ]);
+//
+//
+//        }
+//    }
 }
 //if($request->hasFile('image'))
 //{

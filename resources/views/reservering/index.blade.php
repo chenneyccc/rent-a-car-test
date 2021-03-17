@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="card mb-12">
-                <img class="card-img-top" src="{{ asset('storage/'. $auto->image)}}" style="height: 350px; width:700px"; alt="Card image cap">
+                <img class="card-img-top" src="{{ $auto->url}}" style="height: 350px; width:700px"; alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Merk: {{$auto->merk}} {{$auto->type}}</h5>
                     <p class="card-text">Kenteken: {{$auto->kenteken}}</p>

@@ -49,7 +49,7 @@
             <!-- Three columns of text below the carousel -->
             <div class="row">
                 <div class="col-lg-4">
-                    <img class="rounded-circle" src="{{ URL::to('../img/ceo.jpg') }}" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle" src="{{ URL::to('../img/ceo.png') }}" alt="Generic placeholder image" width="140" height="140">
                     <h2>Fred van Jansen</h2>
                     <p> Fred van Jansen is de eigenaar van Rent A Car en is verantwoordelijk voor het bedrijf. </p>
 
